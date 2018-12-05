@@ -4,11 +4,12 @@
 //  Created by  XMFraker on 2018/12/2
 //  Copyright © XMFraker All rights reserved. (https://github.com/ws00801526)
 //  @class      Themeful
-//  @version    <#class version#>
-//  @abstract   <#class description#>
 
-#ifndef Themeful_h
-#define Themeful_h
+#import <Foundation/Foundation.h>
 
+//! Project version number for Themeful.
+FOUNDATION_EXPORT double ThemefuleVersionNumber;
 
-#endif /* Themeful_h */
+//! Project version string for Themeful.
+FOUNDATION_EXPORT const unsigned char ThemefulVersionString[];
+
