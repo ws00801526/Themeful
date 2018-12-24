@@ -1,0 +1,57 @@
+{
+    "main" : {
+        "title": "Red",
+        "name" : "Valentine",
+        "image" : "Valentine",
+        "view":{
+            "backgroundColor" : "#cc0000",
+            "alpha" : 1.000
+        },
+        "label" : {
+            "font" : "system.18.medium",
+            "color" : "#0c0c0c",
+            "align" : 1
+        }
+    },
+    "Global" : {
+        "status" : "UIStatusBarStyleDefault",
+        "nav" : {
+            "backgroundColor" : "#259fe6",
+            "textAttributes" : {
+                "NSFont" : "system.18.medium",
+                "NSColor" : "#333333"
+            }
+        },
+        "tab" : {
+            "backgroundColor" : "#F1F2F3"
+        },
+        "tab_attributes" : {
+            "NSFont" : "system.12.medium",
+            "NSColor" : "#333333"
+        },
+        "tab_attributes_selected" : {
+            "NSFont" : "system.14.medium",
+            "NSColor" : "#53999d"
+        },
+        "tab_0" : {
+            "title" : "首页",
+            "image" : "bar_home",
+            "selectedImage":"bar_home_selected"
+        },
+        "tab_1" : {
+            "title" : "礼物",
+            "image" : "bar_gift",
+            "selectedImage":"bar_gift_selected"
+        },
+        "tab_2" : {
+            "title" : "生日",
+            "image" : "bar_birth",
+            "selectedImage":"bar_birth_selected"
+        },
+        "tab_3" : {
+            "title" : "我的",
+            "image" : "bar_mine",
+            "selectedImage":"bar_mine_selected"
+        }
+    }
+}

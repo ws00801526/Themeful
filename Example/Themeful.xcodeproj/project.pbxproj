@@ -14,6 +14,19 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		790CCB426C1185AE669E126D /* Pods_Themeful_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64AFE2B76CC723F371B9F91A /* Pods_Themeful_Example.framework */; };
+		9703F48821D0A5C20044716E /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9703F48721D0A5C20044716E /* MessageController.swift */; };
+		971201C821BE558D003B7AF1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971201C721BE558D003B7AF1 /* TabBarController.swift */; };
+		975DAF6421C8C1620010C201 /* DownloadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975DAF6321C8C1620010C201 /* DownloadController.swift */; };
+		978BB01721CCC79100ED0C12 /* 1.json in Resources */ = {isa = PBXBuildFile; fileRef = 978BB01421CCC79000ED0C12 /* 1.json */; };
+		978BB01821CCC79100ED0C12 /* 2.json in Resources */ = {isa = PBXBuildFile; fileRef = 978BB01521CCC79000ED0C12 /* 2.json */; };
+		978BB01921CCC79100ED0C12 /* 3.json in Resources */ = {isa = PBXBuildFile; fileRef = 978BB01621CCC79000ED0C12 /* 3.json */; };
+		978BB02121CCF11B00ED0C12 /* Config.json in Resources */ = {isa = PBXBuildFile; fileRef = 978BB02021CCF11B00ED0C12 /* Config.json */; };
+		978BB02221CCF11B00ED0C12 /* Config.json in Resources */ = {isa = PBXBuildFile; fileRef = 978BB02021CCF11B00ED0C12 /* Config.json */; };
+		97E26A9921A2891E00B5E457 /* Valentine.strings in Resources */ = {isa = PBXBuildFile; fileRef = 97E26A9821A2891E00B5E457 /* Valentine.strings */; };
+		97E26A9A21A2891E00B5E457 /* Valentine.strings in Resources */ = {isa = PBXBuildFile; fileRef = 97E26A9821A2891E00B5E457 /* Valentine.strings */; };
+		97E26A9C21A2B87700B5E457 /* Chinese.strings in Resources */ = {isa = PBXBuildFile; fileRef = 97E26A9B21A2B87600B5E457 /* Chinese.strings */; };
+		97E26A9D21A2B87700B5E457 /* Chinese.strings in Resources */ = {isa = PBXBuildFile; fileRef = 97E26A9B21A2B87600B5E457 /* Chinese.strings */; };
+		97FFF43321BF5A160036C10E /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FFF43221BF5A160036C10E /* MainController.swift */; };
 		FE6E549273748BCDAF8BE0EF /* Pods_Themeful_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7B4DBB06D23D27AC9E56A83 /* Pods_Themeful_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,7 +42,7 @@
 
 /* Begin PBXFileReference section */
 		4C7F53A94B4A8ECF45C821F3 /* Pods-Themeful_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Themeful_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Themeful_Tests/Pods-Themeful_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		604D747DF6A0284A7D9E61C2 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		604D747DF6A0284A7D9E61C2 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* Themeful_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Themeful_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,11 +55,21 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		64AFE2B76CC723F371B9F91A /* Pods_Themeful_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Themeful_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EE088A40F7D5B3C6803872E /* Pods-Themeful_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Themeful_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Themeful_Tests/Pods-Themeful_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		9703F48721D0A5C20044716E /* MessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
+		971201C721BE558D003B7AF1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		975DAF6321C8C1620010C201 /* DownloadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadController.swift; sourceTree = "<group>"; };
+		978BB01421CCC79000ED0C12 /* 1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = 1.json; path = ../../QQThemes/1.json; sourceTree = "<group>"; };
+		978BB01521CCC79000ED0C12 /* 2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = 2.json; path = ../../QQThemes/2.json; sourceTree = "<group>"; };
+		978BB01621CCC79000ED0C12 /* 3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = 3.json; path = ../../QQThemes/3.json; sourceTree = "<group>"; };
+		978BB02021CCF11B00ED0C12 /* Config.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = Config.json; sourceTree = "<group>"; };
+		97E26A9821A2891E00B5E457 /* Valentine.strings */ = {isa = PBXFileReference; explicitFileType = text.json; path = Valentine.strings; sourceTree = "<group>"; };
+		97E26A9B21A2B87600B5E457 /* Chinese.strings */ = {isa = PBXFileReference; explicitFileType = text.json; fileEncoding = 4; path = Chinese.strings; sourceTree = "<group>"; };
+		97FFF43221BF5A160036C10E /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		A7B4DBB06D23D27AC9E56A83 /* Pods_Themeful_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Themeful_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA2966034AD38319519C54F2 /* Themeful.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = Themeful.podspec; path = ../Themeful.podspec; sourceTree = "<group>"; };
+		DA2966034AD38319519C54F2 /* Themeful.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Themeful.podspec; path = ../Themeful.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		EAF8549765FA9473B60236DD /* Pods-Themeful_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Themeful_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Themeful_Example/Pods-Themeful_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		ECF9353AE97B8F160DE2E49B /* Pods-Themeful_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Themeful_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Themeful_Example/Pods-Themeful_Example.release.xcconfig"; sourceTree = "<group>"; };
-		F72D1B1D07E813B99E57558D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		F72D1B1D07E813B99E57558D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +129,10 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				97FFF43221BF5A160036C10E /* MainController.swift */,
+				9703F48721D0A5C20044716E /* MessageController.swift */,
+				975DAF6321C8C1620010C201 /* DownloadController.swift */,
+				971201C721BE558D003B7AF1 /* TabBarController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -118,7 +145,13 @@
 		607FACD31AFB9204008FA782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				978BB01421CCC79000ED0C12 /* 1.json */,
+				978BB01521CCC79000ED0C12 /* 2.json */,
+				978BB01621CCC79000ED0C12 /* 3.json */,
 				607FACD41AFB9204008FA782 /* Info.plist */,
+				97E26A9821A2891E00B5E457 /* Valentine.strings */,
+				97E26A9B21A2B87600B5E457 /* Chinese.strings */,
+				978BB02021CCF11B00ED0C12 /* Config.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -189,7 +222,6 @@
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				1C321765503AD86A99464BD1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -208,16 +240,17 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0900;
+						DevelopmentTeam = CY4833TA98;
+						LastSwiftMigration = 1010;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1010;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
@@ -247,7 +280,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				978BB01921CCC79100ED0C12 /* 3.json in Resources */,
+				978BB02121CCF11B00ED0C12 /* Config.json in Resources */,
+				978BB01721CCC79100ED0C12 /* 1.json in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				97E26A9C21A2B87700B5E457 /* Chinese.strings in Resources */,
+				978BB01821CCC79100ED0C12 /* 2.json in Resources */,
+				97E26A9921A2891E00B5E457 /* Valentine.strings in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,36 +295,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97E26A9D21A2B87700B5E457 /* Chinese.strings in Resources */,
+				97E26A9A21A2891E00B5E457 /* Valentine.strings in Resources */,
+				978BB02221CCF11B00ED0C12 /* Config.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1C321765503AD86A99464BD1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Themeful_Tests/Pods-Themeful_Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Themeful_Tests/Pods-Themeful_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		2D02D5FB58636D5053586328 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -317,12 +335,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Themeful_Example/Pods-Themeful_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SSZipArchive/SSZipArchive.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Themeful/Themeful.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SSZipArchive.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Themeful.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,8 +381,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97FFF43321BF5A160036C10E /* MainController.swift in Sources */,
+				9703F48821D0A5C20044716E /* MessageController.swift in Sources */,
+				971201C821BE558D003B7AF1 /* TabBarController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				975DAF6421C8C1620010C201 /* DownloadController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,12 +440,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -467,12 +495,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -506,13 +536,13 @@
 			baseConfigurationReference = EAF8549765FA9473B60236DD /* Pods-Themeful_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CY4833TA98;
 				INFOPLIST_FILE = Themeful/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -521,13 +551,13 @@
 			baseConfigurationReference = ECF9353AE97B8F160DE2E49B /* Pods-Themeful_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CY4833TA98;
 				INFOPLIST_FILE = Themeful/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -547,8 +577,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Themeful_Example.app/Themeful_Example";
 			};
 			name = Debug;
@@ -565,8 +594,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Themeful_Example.app/Themeful_Example";
 			};
 			name = Release;

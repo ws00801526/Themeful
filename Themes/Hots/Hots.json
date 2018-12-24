@@ -1,0 +1,57 @@
+{
+    "main" : {
+        "title": "Red",
+        "name" : "Valentine",
+        "image" : "Valentine",
+        "view":{
+            "backgroundColor" : "#cc0000",
+            "alpha" : 1.000
+        },
+        "label" : {
+            "font" : "system.18.medium",
+            "color" : "#0c0c0c",
+            "align" : 1
+        }
+    },
+    "Global" : {
+        "status" : "UIStatusBarStyleDefault",
+        "nav" : {
+            "backgroundColor" : "#259fe6",
+            "textAttributes" : {
+                "NSFont" : "system.18.medium",
+                "NSColor" : "#333333"
+            }
+        },
+        "tab" : {
+            "backgroundColor" : "#F1F2F3"
+        },
+        "tab_attributes" : {
+            "NSFont" : "system.12.medium",
+            "NSColor" : "#333333"
+        },
+        "tab_attributes_selected" : {
+            "NSFont" : "system.14.medium",
+            "NSColor" : "#53999d"
+        },
+        "tab_0" : {
+            "title" : "首页",
+            "image" : "tab_first",
+            "selectedImage":"tab_first_sel"
+        },
+        "tab_1" : {
+            "title" : "品牌",
+            "image" : "tab_second",
+            "selectedImage":"tab_second_sel"
+        },
+        "tab_2" : {
+            "title" : "促销",
+            "image" : "tab_forth",
+            "selectedImage":"tab_forth_sel"
+        },
+        "tab_3" : {
+            "title" : "我的",
+            "image" : "tab_fifth",
+            "selectedImage":"tab_fifth_sel"
+        }
+    }
+}

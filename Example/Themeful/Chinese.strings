@@ -1,0 +1,57 @@
+{
+    "main" : {
+        "title": "Blue",
+        "name" : "Chinese New Year",
+        "image" : "Chinese",
+        "view":{
+            "backgroundColor" : "#cc0000",
+            "alpha" : 1.000
+        },
+        "label" : {
+            "font" : "system.18.medium",
+            "color" : "#0c0c0c",
+            "align" : 1
+        }
+    },
+    "Global" : {
+        "status" : "UIStatusBarStyleLightContent",
+        "nav" : {
+            "backgroundColor" : "#f84948",
+            "textAttributes" : {
+                "NSFont" : "system.22.reglur",
+                "NSColor" : "#F1F2F3"
+            }
+        },
+        "tab" : {
+            "backgroundColor" : "#F1F2F3"
+        },
+        "tab_attributes" : {
+            "NSFont" : "system.12.medium",
+            "NSColor" : "#666666"
+        },
+        "tab_attributes_selected" : {
+            "NSFont" : "system.14.medium",
+            "NSColor" : "#f84948"
+        },
+        "tab_0" : {
+            "title" : "首页",
+            "image" : "chinese_bar_home",
+            "selectedImage" : "chinese_bar_home_selected"
+        },
+        "tab_1" : {
+            "title" : "礼物",
+            "image" : "chinese_bar_gift",
+            "selectedImage" : "chinese_bar_gift_selected"
+        },
+        "tab_2" : {
+            "title" : "生日",
+            "image" : "chinese_bar_birth",
+            "selectedImage" : "chinese_bar_birth_selected"
+        },
+        "tab_3" : {
+            "title" : "我的",
+            "image" : "chinese_bar_mine",
+            "selectedImage" : "chinese_bar_mine_selected"
+        }
+    }
+}

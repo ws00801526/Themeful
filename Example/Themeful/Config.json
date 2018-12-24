@@ -1,0 +1,74 @@
+{
+    "main": {
+        "title": "Blue",
+        "name": "Chinese New Year",
+        "image": "Chinese",
+        "view": {
+            "backgroundColor": "#cc0000",
+            "alpha": 1
+        },
+        "label": {
+            "font": "system.18.medium",
+            "color": "#0c0c0c",
+            "align": 1
+        }
+    },
+    "message": {
+        "background" : "qvip_conversation_bg_animate",
+        "headBackground" : "header_bg_ios7",
+        "headShadow" : "header_bg_shadow",
+        "headMenu" : "header_icon_list",
+        "headMenuPress" : "header_icon_list_pressed",
+        "searchBarchground" : "searchbar_bg",
+        "searchIcon" : "searchbar_icon_search",
+        "searchInput" : "searchbar_inputbox",
+        "segmentedLeft" : "header_leftbtn_nor",
+        "segmentedLeftPress" : "header_leftbtn_press",
+        "segmentedMiddle" : "header_midtab_nor",
+        "segmentedMiddlePress" : "header_midtab_press",
+        "segmentedRight" : "header_righttab_nor",
+        "segmentedRightPress" : "header_righttab_press"
+    },
+    "Global": {
+        "status": "UIStatusBarStyleLightContent",
+        "nav": {
+            "backgroundColor": "#f84948",
+            "textAttributes": {
+                "NSFont": "system.22.reglur",
+                "NSColor": "#F1F2F3"
+            }
+        },
+        "tab": {
+            "backgroundImage": "tabbar_bg_ios7",
+            "backgroundColor": "#F1F2F3"
+        },
+        "tab_attributes": {
+            "NSFont": "system.12.medium",
+            "NSColor": "#666666"
+        },
+        "tab_attributes_selected": {
+            "NSFont": "system.14.medium",
+            "NSColor": "#f84948"
+        },
+        "tab_0": {
+            "title": "",
+            "image": "tab_buddy_nor",
+            "selectedImage": "tab_buddy_press"
+        },
+        "tab_1": {
+            "title": "",
+            "image": "tab_call_nor",
+            "selectedImage": "tab_call_press"
+        },
+        "tab_2": {
+            "title": "",
+            "image": "tab_qworld_nor",
+            "selectedImage": "tab_qworld_press"
+        },
+        "tab_3": {
+            "title": "",
+            "image": "tab_recent_nor",
+            "selectedImage": "tab_recent_press"
+        }
+    }
+}
