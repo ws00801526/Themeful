@@ -9,6 +9,11 @@
 
 import UIKit
 
+public let ResourcesPathComponent = "resources"
+internal let ZIPFileExtension = "zip"
+internal let JSONFileExtension = "json"
+internal let PlistFileExtension = "plist"
+
 fileprivate extension UIColor {
     
     convenience init(_ hex3: UInt16, alpha: CGFloat = 1, displayP3: Bool = false) {
@@ -47,7 +52,7 @@ fileprivate extension UIColor {
             self.init(red: red, green: green, blue: blue, alpha: alpha)
         }
     }
-
+    
     convenience init(_ hex8: UInt32, displayP3: Bool = false) {
         let divisor = CGFloat(255)
         let red     = CGFloat((hex8 & 0xFF000000) >> 24) / divisor
@@ -60,7 +65,7 @@ fileprivate extension UIColor {
             self.init(red: red, green: green, blue: blue, alpha: alpha)
         }
     }
-
+    
     convenience init?(_ hex: String, displayP3: Bool = false) {
         let str = hex.trimmingCharacters(in: .whitespacesAndNewlines).lowercased().replacingOccurrences(of: "#", with: "").replacingOccurrences(of: "0x", with: "")
         let len = str.count
@@ -97,6 +102,21 @@ fileprivate extension UIColor {
     }
 }
 
+fileprivate extension UIImage {
+    
+    class func image(with color: UIColor, size: CGSize = CGSize(width: 1.0, height: 1.0)) -> UIImage? {
+        
+        guard size.width > 0, size.height > 0 else { return nil }
+        let rect = CGRect(origin: .zero, size: size)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+        context!.setFillColor(color.cgColor)
+        context!.fill(rect)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+    }
+}
 
 @available(iOS 8.2, *)
 fileprivate extension UIFont.Weight {
@@ -112,6 +132,25 @@ fileprivate extension UIFont.Weight {
         case "heavy": self.init(rawValue: UIFont.Weight.heavy.rawValue)
         case "black": self.init(rawValue: UIFont.Weight.black.rawValue)
         default: self.init(rawValue: UIFont.Weight.regular.rawValue)
+        }
+    }
+}
+
+fileprivate extension UIFont {
+    
+    class func font(with string: String) -> UIFont? {
+        let values = string.split(separator: ".")
+        guard values.count == 3 else { return nil }
+        let name = String(values.first ?? "")
+        let size = CGFloat((String(values[1]) as NSString).floatValue)
+        if (name.count <= 0 || ["system", "*"].contains(name)) {
+            if #available(iOS 8.2, *) {
+                return UIFont.systemFont(ofSize: size, weight: UIFont.Weight(String(values.last ?? "")))
+            } else {
+                return UIFont.systemFont(ofSize: size)
+            }
+        } else {
+            return UIFont.init(name: name, size: size)
         }
     }
 }
@@ -134,8 +173,7 @@ public extension ThemeManager {
 public extension ThemeManager {
     
     public class func string(_ keyPath: String) -> String? {
-
-//        guard let string = getValue(for: keyPath) as? String else { return nil }
+        
         guard let info = shared.currentTheme?.info else { return nil }
         guard let value = info.value(forKeyPath: keyPath) as? String else { return nil }
         return value
@@ -148,15 +186,45 @@ public extension ThemeManager {
         return value
     }
     
-//    public class func value(_ keyPath: String) -> NSValue? {
-//
-//        guard let string = string(keyPath) else { return nil }
-//        guard let value = NSValue(string)  else { return nil }
-////        guard let info = shared.currentTheme?.info else { return nil }
-////        guard let string = info.value(forKeyPath: keyPath) as? NSValue else { return nil }
-////        guard let value = info.value(forKeyPath: keyPath) as? NSValue else { return nil }
-//        return value
-//    }
+    public class func textAttributes(_ keyPath: String) -> [NSAttributedString.Key : Any]? {
+        guard let info = dictionary(keyPath) else { return nil }
+        var attributed: [NSAttributedString.Key : Any] = [:]
+        
+        for item in info {
+            
+            guard let ikey = item.key as? String else { continue }
+            let rkey: NSAttributedString.Key = NSAttributedString.Key.init(ikey)
+            switch rkey {
+                
+            case .ligature where item.value is NSNumber: fallthrough
+            case .kern where item.value is NSNumber: fallthrough
+            case .strikethroughStyle where item.value is NSNumber: fallthrough
+            case .underlineStyle where item.value is NSNumber: fallthrough
+            case .strokeWidth where item.value is NSNumber: fallthrough
+            case .obliqueness where item.value is NSNumber: fallthrough
+            case .expansion where item.value is NSNumber: attributed[rkey] = item.value
+                
+            case .strokeColor where item.value is String: fallthrough
+            case .underlineColor where item.value is String: fallthrough
+            case .strikethroughColor where item.value is String: fallthrough
+            case .backgroundColor where item.value is String: fallthrough
+            case .foregroundColor where item.value is String: attributed[rkey] = UIColor(item.value as! String)
+            case .font where item.value is String: attributed[rkey] = UIFont.font(with: item.value as! String)
+            default: break
+            }
+        }
+        return attributed
+    }
+    
+    //    public class func value(_ keyPath: String) -> NSValue? {
+    //
+    //        guard let string = string(keyPath) else { return nil }
+    //        guard let value = NSValue(string)  else { return nil }
+    ////        guard let info = shared.currentTheme?.info else { return nil }
+    ////        guard let string = info.value(forKeyPath: keyPath) as? NSValue else { return nil }
+    ////        guard let value = info.value(forKeyPath: keyPath) as? NSValue else { return nil }
+    //        return value
+    //    }
     
     public class func dictionary(_ keyPath: String) -> NSDictionary? {
         
@@ -166,49 +234,48 @@ public extension ThemeManager {
     }
     
     public class func color(_ keyPath: String) -> UIColor? {
-
+        
         guard let hex = string(keyPath) else { return nil }
         guard let color = UIColor(hex) else { return nil }
         return color
     }
     
-    public class func image(_ keyPath: String) -> UIImage? {
+    public class func colorImage(_ keyPath: String) -> UIImage? {
 
+        guard let color = color(keyPath) else { return nil }
+        return UIImage.image(with: color)
+    }
+    
+    public class func image(_ keyPath: String) -> UIImage? {
+        
         guard let imageName = string(keyPath) else { return nil }
-        if let filePath = shared.currentTheme?.path.URL?.appendingPathComponent(imageName).path {
-            guard let image = UIImage(contentsOfFile: filePath) else { return nil }
-            return image
+        if let dir = shared.currentTheme?.path.URL {
+            if let image = UIImage(contentsOfFile: dir.appendingPathComponent(imageName).path) {
+                return image
+            } else if let image = UIImage(contentsOfFile: dir.appendingPathComponent(ResourcesPathComponent).appendingPathComponent(imageName).path) {
+                return image
+            } else {
+                print("Themeful WARNING: Not found image name [\(imageName)] at path [\(dir.path)]");
+                return nil
+            }
         } else {
-            print("SwiftTheme WARNING: Not found image name at main bundle: \(imageName)")
-            guard let image = UIImage(named: imageName) else { return nil }
+            guard let image = UIImage(named: imageName) else { print("Themeful WARNING: Not found image name at main bundle: \(imageName)"); return nil }
             return image
         }
     }
-
+    
     /// get UIFont from a style
     /// support style of (font.name,font.size,font.weight)
     /// - Parameter keyPath: the key path of style
     /// - Returns: Optional(UIFont)
     public class func font(_ keyPath: String) -> UIFont? {
         guard let string = string(keyPath) else { return nil }
-        let values = string.split(separator: ".")
-        guard values.count == 3 else { return nil }
-        let name = String(values.first ?? "")
-        let size = CGFloat((String(values[1]) as NSString).floatValue)
-        if (name.count <= 0 || ["system", "*"].contains(name)) {
-            if #available(iOS 8.2, *) {
-                return UIFont.systemFont(ofSize: size, weight: UIFont.Weight(String(values.last ?? "")))
-            } else {
-                return UIFont.systemFont(ofSize: size)
-            }
-        } else {
-            return UIFont.init(name: name, size: size)
-        }
+        return UIFont.font(with: string)
     }
 }
 
 open class ThemePicker {
-
+    
     public typealias ValuePicker = () -> Any?
     public var valuePicker: ValuePicker
     required public init(v: @escaping ValuePicker) {
@@ -236,10 +303,16 @@ open class ThemeMultiPicker<KeyType>: ThemePicker where KeyType : Hashable {
 }
 
 public class ThemeImagePicker: ThemePicker {
-
+    
     public var rawValue: UIImage? { return valuePicker() as? UIImage }
-    public convenience init(_ keyPath: String) {
-        self.init { return ThemeManager.image(keyPath) }
+    public convenience init(_ keyPath: String, rendering mode: UIImage.RenderingMode = .automatic) {
+        self.init {
+            if let image = ThemeManager.image(keyPath) {
+                if mode == .automatic { return image}
+                else { return image.withRenderingMode(mode) }
+            }
+            return ThemeManager.image(keyPath)
+        }
     }
 }
 
@@ -279,6 +352,27 @@ public class ThemeFontPicker: ThemePicker {
     }
 }
 
+public class ThemeAttirbutesPicker: ThemePicker {
+    public var rawValue: [NSAttributedString.Key : Any]? { return valuePicker() as? [NSAttributedString.Key : Any] }
+    public convenience init(_ keyPath: String) {
+        self.init { return ThemeManager.textAttributes(keyPath) }
+    }
+}
+
+public class ThemeBackgroundImagePicker: ThemePicker {
+    
+    public var rawValue: UIImage? { return valuePicker() as? UIImage }
+    public var barMetrics: UIBarMetrics = .defaultPrompt
+    public var barPosition: UIBarPosition = .any
+    public convenience init(_ keyPath: String) {
+        self.init { return ThemeManager.image(keyPath) }
+    }
+    
+    public convenience init(colorKeyPath keyPath: String) {
+        self.init { ThemeManager.colorImage(keyPath) }
+    }
+}
+
 public class ThemeStatusBarStylePicker: ThemePicker {
     
     public var animated: Bool = true
@@ -298,7 +392,6 @@ public class ThemeStatusBarStylePicker: ThemePicker {
 }
 
 // MARK: SubClass Of ValuePicker
-
 
 // MARK: SubClass Of NumberPicker
 
