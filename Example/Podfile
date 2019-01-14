@@ -4,6 +4,9 @@ target 'Themeful_Example' do
   pod 'Themeful', :path => '../'
 
   pod 'SwiftyJSON'
+  # using for debug
+  pod 'WoodPeckeriOS', :configurations => ['Debug']
+
   target 'Themeful_Tests' do
     inherit! :search_paths
 
