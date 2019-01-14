@@ -9,25 +9,26 @@
 Pod::Spec.new do |s|
   s.name             = 'Themeful'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of Themeful.'
+  s.summary          = 'easy way to set theme of app'
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+                       customize you app using different theme
+                       such as
+                       label.text label.textColor ...
+                       imageView.image ...
                        DESC
-
   s.homepage         = 'https://github.com/ws00801526/Themeful'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'ws00801526' => '3057600441@qq.com' }
   s.source           = { :git => 'https://github.com/ws00801526/Themeful.git', :tag => s.version.to_s }
-
   s.swift_version = '4.2'
   s.ios.deployment_target = '9.0'
   s.default_subspecs = 'Core', 'Download'
   s.module_name = 'Themeful'
-  
+
   s.subspec 'Core' do |ss|
       ss.source_files = 'Themeful/Classes/Base/**/*'
   end
-  
+
   s.subspec 'Download' do |ss|
       ss.source_files = 'Themeful/Classes/Download/**/*'
       ss.dependency 'SSZipArchive'
