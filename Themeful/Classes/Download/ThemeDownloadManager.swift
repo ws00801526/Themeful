@@ -92,33 +92,27 @@ public protocol ThemeDownloadDelegate {
 
 public extension Theme {
     
-    public var isExists: Bool {
-        switch self.path {
-        case .sandbox(let URL): return Theme.isExists(at: URL)
-        default:
-            if let _ = Bundle.main.url(forResource: self.name, withExtension: JSONFileExtension) { return true }
-            if let _ = Bundle.main.url(forResource: self.name, withExtension: PlistFileExtension) { return true }
-            return false
-        }
-    }
-    
     public class var downloadedThemes: [Theme] {
         let contents = try? FileManager.default.contentsOfDirectory(at: themeDir(), includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
         guard let subPaths = contents else { return [] }
         return subPaths.map { Theme($0.lastPathComponent, path: .sandbox($0)) }.filter({ $0.isExists })
     }
     
-    public class func isExists(of name: String) -> Bool {
-        let URL = themeDir(name)
-        let theme = Theme(name, path: .sandbox(URL))
-        return theme.isExists
-    }
     
     public class func downloadedTheme(of name: String) -> Theme? {
         let URL = themeDir(name)
         let theme = Theme(name, path: .sandbox(URL))
         guard theme.isExists else { return nil }
         return theme
+    }
+}
+
+fileprivate extension Theme {
+    
+    class func themeName(of info: ThemefulDownloadProtocol) -> String? {
+        if info.name.count > 0 { return info.name }
+        else if let name = info.remoteURL?.lastPathComponent, name.count > 0 { return name }
+        else { return nil }
     }
 }
 
@@ -141,11 +135,9 @@ public extension ThemeDownloadManager {
         // should not remove current using theme
         if ThemeManager.shared.currentTheme?.name == name { return false }
         let URL = Theme.themeDir(name)
-        if FileManager.default.fileExists(at: URL), let _ = try? FileManager.default.removeItem(at: URL) {
-            return true
-        } else {
-            return false
-        }
+        guard FileManager.default.fileExists(at: URL) else { return false }
+        guard let _ = (try? FileManager.default.removeItem(at: URL)) else { return false }
+        return true
     }
 }
 
@@ -294,7 +286,8 @@ fileprivate extension ThemeDownloadManager {
         guard let name = Theme.themeName(of: info) else { return nil }
         
         // check is theme downloaded
-        guard Theme.isExists(at: Theme.themeDir(name)) == false else {
+        let theme = Theme(name, path: .sandbox(Theme.themeDir(name)), info: nil)
+        guard theme.isExists == false else {
             status = .downloaded
             return nil
         }

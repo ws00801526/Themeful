@@ -44,36 +44,6 @@ class ThemeDownloadDelegateWrapper: NSObject {
     }
 }
 
-extension Theme {
-    
-    class func themeName(of info: ThemefulDownloadProtocol) -> String? {
-        if info.name.count > 0 { return info.name }
-        else if let name = info.remoteURL?.lastPathComponent, name.count > 0 { return name }
-        else { return nil }
-    }
-    
-    class func themeDir(_ subPath: String? = nil) -> URL {
-        guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else { return URL(fileURLWithPath: "\(subPath ?? "")") }
-        if let subPath = subPath { return URL(fileURLWithPath: "\(path)/com.xmfraker.themeful/\(subPath)", isDirectory: false) }
-        else { return URL(fileURLWithPath: "\(path)/com.xmfraker.themeful", isDirectory: false) }
-    }
-    
-    class func isFileExists(at URL: URL, isDir: Bool = false) -> Bool {
-        var isDirValue: ObjCBool = ObjCBool(false)
-        if FileManager.default.fileExists(at: URL, isDirectory: &isDirValue) == false { return false }
-        return isDirValue.boolValue == isDir
-    }
-        
-    class func isExists(at URL: URL) -> Bool {
-        if isFileExists(at: URL, isDir: true) {
-            let jsonURL = URL.appendingPathComponent(URL.lastPathComponent).appendingPathExtension(JSONFileExtension)
-            let plistURL = URL.appendingPathComponent(URL.lastPathComponent).appendingPathExtension(PlistFileExtension)
-            return isFileExists(at: jsonURL, isDir: false) || isFileExists(at: plistURL, isDir: false)
-        }
-        return false
-    }
-}
-
 extension ThemeDownloadDelegateWrapper {
     
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
@@ -102,31 +72,6 @@ extension ThemeDownloadDelegateWrapper {
         if let delegate = self.delegate {
             delegate.downloadManager(manager, downloadTask: downloadTask, didResumeAtOffset: fileOffset, expectedTotalBytes: expectedTotalBytes)
         }
-    }
-}
-
-extension FileManager {
-    
-    func fileExists(at URL: URL, isDirectory: UnsafeMutablePointer<ObjCBool>? = nil) -> Bool {
-        if URL.isFileURL { return fileExists(atPath: URL.path, isDirectory: isDirectory) }
-        else { return fileExists(atPath: URL.absoluteString, isDirectory: isDirectory) }
-    }
-    
-    func renameFile(at URL: URL, with name: String, overwrite: Bool = false) -> Bool {
-        
-        // file doesnot exists
-        guard fileExists(at: URL) else { return false }
-        
-        let dstURL = URL.deletingLastPathComponent().appendingPathComponent(name)
-        
-        // remove exists dst if need overwrite
-        if fileExists(at: URL) {
-            if overwrite == false { return true }
-            else { try? removeItem(at: dstURL) }
-        }
-        
-        if let _ = try? moveItem(at: URL, to: dstURL) { return true }
-        return false
     }
 }
 

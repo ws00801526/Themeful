@@ -60,34 +60,47 @@ public class Theme : NSObject {
         if case let .sandbox(URL) = self.path { return self.name.hashValue ^ URL.hashValue }
         return self.name.hashValue
     }
+    
 }
 
-fileprivate extension URL {
+public extension Theme {
     
-    fileprivate var isJSONFile: Bool {
-        return self.pathExtension == PlistFileExtension || self.pathExtension == JSONFileExtension
+    public var isExists: Bool {
+        
+        switch self.path {
+        case .sandbox(let URL): return Theme.isExists(at: URL)
+        default:
+            if let _ = Bundle.main.url(forResource: self.name, withExtension: JSONFileExtension) { return true }
+            if let _ = Bundle.main.url(forResource: self.name, withExtension: PlistFileExtension) { return true }
+            return false
+        }
     }
     
-    func JSON() -> NSDictionary? {
-        
-        if self.pathExtension == PlistFileExtension, let info = NSDictionary(contentsOf: self) {
-            return info
-        }
-        
-        if let data = NSData(contentsOf: self) {
-            let json = try? JSONSerialization.jsonObject(with: data as Data, options: .mutableContainers) as? NSDictionary
-            return json ?? nil
-        }
-        
-        return nil
+    public class func isExists(of name: String) -> Bool {
+        let URL = themeDir(name)
+        let theme = Theme(name, path: .sandbox(URL))
+        return theme.isExists
     }
-}
-
-fileprivate extension Array where Element: Hashable {
     
-    func filterDuplicate() -> [Element] {
-        if self.isEmpty { return [] }
-        return Array(Set(self))
+    class func themeDir(_ subPath: String? = nil) -> URL {
+        guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else { return URL(fileURLWithPath: "\(subPath ?? "")") }
+        if let subPath = subPath { return URL(fileURLWithPath: "\(path)/com.xmfraker.themeful/\(subPath)", isDirectory: false) }
+        else { return URL(fileURLWithPath: "\(path)/com.xmfraker.themeful", isDirectory: false) }
+    }
+    
+    class func isFileExists(at URL: URL, isDir: Bool = false) -> Bool {
+        var isDirValue: ObjCBool = ObjCBool(false)
+        if FileManager.default.fileExists(at: URL, isDirectory: &isDirValue) == false { return false }
+        return isDirValue.boolValue == isDir
+    }
+    
+    class func isExists(at URL: URL) -> Bool {
+        if isFileExists(at: URL, isDir: true) {
+            let jsonURL = URL.appendingPathComponent(URL.lastPathComponent).appendingPathExtension(JSONFileExtension)
+            let plistURL = URL.appendingPathComponent(URL.lastPathComponent).appendingPathExtension(PlistFileExtension)
+            return isFileExists(at: jsonURL, isDir: false) || isFileExists(at: plistURL, isDir: false)
+        }
+        return false
     }
 }
 
@@ -138,13 +151,10 @@ public class ThemeManager {
         
         if let t = theme {
             self.currentTheme = t
-//            _ = ThemeManager.setTheme(theme: t);
         } else if let t = themes.first(where: { $0.hash == UserDefaults.standard.integer(forKey: TMCurrentThemeKey) }) {
             self.currentTheme = t
-//            _ = ThemeManager.setTheme(name: name)
         } else if let t = themes.last {
             self.currentTheme = t
-//          _ = ThemeManager.setTheme(theme: t)
         }
     }
     
