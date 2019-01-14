@@ -1,6 +1,6 @@
 # Themeful
 
-[![CI Status](https://img.shields.io/travis/ws00801526/Themeful.svg?style=flat)](https://travis-ci.org/ws00801526/Themeful)
+[![Build Status](https://travis-ci.com/ws00801526/Themeful.svg?branch=master)](https://travis-ci.com/ws00801526/Themeful)
 [![Version](https://img.shields.io/cocoapods/v/Themeful.svg?style=flat)](https://cocoapods.org/pods/Themeful)
 [![License](https://img.shields.io/cocoapods/l/Themeful.svg?style=flat)](https://cocoapods.org/pods/Themeful)
 [![Platform](https://img.shields.io/cocoapods/p/Themeful.svg?style=flat)](https://cocoapods.org/pods/Themeful)
