@@ -31,6 +31,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'Download' do |ss|
       ss.source_files = 'Themeful/Classes/Download/**/*'
+      ss.dependency 'Themeful/Core'
       ss.dependency 'SSZipArchive'
   end
 end
