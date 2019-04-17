@@ -40,13 +40,17 @@ public protocol ThemefulCompatible: NSObjectProtocol {
     var theme: CompatibleType { get }
 }
 
-fileprivate var TFKey: Int = 101
+private struct AssociateKeys {
+    static var TFKey: Int = 101
+}
+
 public extension ThemefulCompatible where Self: NSObject {
 
     public var theme: Themeful<Self> {
-        if let theme = objc_getAssociatedObject(self, &TFKey) as? Themeful<Self> { return theme }
+        
+        if let theme = objc_getAssociatedObject(self, &AssociateKeys.TFKey) as? Themeful<Self> { return theme }
         let theme = Themeful(self)
-        objc_setAssociatedObject(self, &TFKey, theme, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        objc_setAssociatedObject(self, &AssociateKeys.TFKey, theme, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         return theme
     }
 }
@@ -65,7 +69,6 @@ fileprivate extension Themeful {
     fileprivate func removeThemeNotification() {
         NotificationCenter.default.removeObserver(self, name: ThemeDidUpdateNotification, object: nil)
     }
-    
 }
 
 
