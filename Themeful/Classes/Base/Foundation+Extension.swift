@@ -11,12 +11,12 @@ import Foundation
 
 internal extension FileManager {
     
-    internal func fileExists(at URL: URL, isDirectory: UnsafeMutablePointer<ObjCBool>? = nil) -> Bool {
+    func fileExists(at URL: URL, isDirectory: UnsafeMutablePointer<ObjCBool>? = nil) -> Bool {
         if URL.isFileURL { return fileExists(atPath: URL.path, isDirectory: isDirectory) }
         else { return fileExists(atPath: URL.absoluteString, isDirectory: isDirectory) }
     }
     
-    internal func renameFile(at URL: URL, with name: String, overwrite: Bool = false) -> Bool {
+    func renameFile(at URL: URL, with name: String, overwrite: Bool = false) -> Bool {
         
         // file doesnot exists
         guard fileExists(at: URL) else { return false }
@@ -36,11 +36,11 @@ internal extension FileManager {
 
 internal extension URL {
     
-    internal var isJSONFile: Bool {
+    var isJSONFile: Bool {
         return self.pathExtension == PlistFileExtension || self.pathExtension == JSONFileExtension
     }
     
-    internal func JSON() -> NSDictionary? {
+    func JSON() -> NSDictionary? {
         
         if self.pathExtension == PlistFileExtension, let info = NSDictionary(contentsOf: self) {
             return info
@@ -57,8 +57,12 @@ internal extension URL {
 
 internal extension Array where Element: Hashable {
     
-    internal func filterDuplicate() -> [Element] {
+    func filterDuplicate() -> [Element] {
         if self.isEmpty { return [] }
         return Array(Set(self))
+    }
+    
+    subscript(safe index: Int) -> Element? {
+        return indices ~= index ? self[index] : nil
     }
 }

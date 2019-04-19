@@ -92,14 +92,14 @@ public protocol ThemeDownloadDelegate {
 
 public extension Theme {
     
-    public class var downloadedThemes: [Theme] {
+    class var downloadedThemes: [Theme] {
         let contents = try? FileManager.default.contentsOfDirectory(at: themeDir(), includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
         guard let subPaths = contents else { return [] }
         return subPaths.map { Theme($0.lastPathComponent, path: .sandbox($0)) }.filter({ $0.isExists })
     }
     
     
-    public class func downloadedTheme(of name: String) -> Theme? {
+    class func downloadedTheme(of name: String) -> Theme? {
         let URL = themeDir(name)
         let theme = Theme(name, path: .sandbox(URL))
         guard theme.isExists else { return nil }

@@ -56,16 +56,12 @@ public class Theme : NSObject {
         return lhs.name == rhs.name && lhs.info == rhs.info
     }
     
-    public override var hash: Int {
-        if case let .sandbox(URL) = self.path { return self.name.hashValue ^ URL.hashValue }
-        return self.name.hashValue
-    }
-    
+    public override var hash: Int { return name.hash }
 }
 
 public extension Theme {
     
-    public var isExists: Bool {
+    var isExists: Bool {
         
         switch self.path {
         case .sandbox(let URL): return Theme.isExists(at: URL)
@@ -76,25 +72,25 @@ public extension Theme {
         }
     }
     
-    public class func isExists(of name: String) -> Bool {
+    class func isExists(of name: String) -> Bool {
         let URL = themeDir(name)
         let theme = Theme(name, path: .sandbox(URL))
         return theme.isExists
     }
     
-    class func themeDir(_ subPath: String? = nil) -> URL {
+    internal class func themeDir(_ subPath: String? = nil) -> URL {
         guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else { return URL(fileURLWithPath: "\(subPath ?? "")") }
         if let subPath = subPath { return URL(fileURLWithPath: "\(path)/com.xmfraker.themeful/\(subPath)", isDirectory: false) }
         else { return URL(fileURLWithPath: "\(path)/com.xmfraker.themeful", isDirectory: false) }
     }
     
-    class func isFileExists(at URL: URL, isDir: Bool = false) -> Bool {
+    internal class func isFileExists(at URL: URL, isDir: Bool = false) -> Bool {
         var isDirValue: ObjCBool = ObjCBool(false)
         if FileManager.default.fileExists(at: URL, isDirectory: &isDirValue) == false { return false }
         return isDirValue.boolValue == isDir
     }
     
-    class func isExists(at URL: URL) -> Bool {
+    internal class func isExists(at URL: URL) -> Bool {
         if isFileExists(at: URL, isDir: true) {
             let jsonURL = URL.appendingPathComponent(URL.lastPathComponent).appendingPathExtension(JSONFileExtension)
             let plistURL = URL.appendingPathComponent(URL.lastPathComponent).appendingPathExtension(PlistFileExtension)

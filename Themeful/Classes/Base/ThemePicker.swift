@@ -15,7 +15,7 @@ internal let JSONFileExtension = "json"
 internal let PlistFileExtension = "plist"
 
 public extension ThemeManager {
-    public class func getValue<ValueType>(for keyPath: String) -> ValueType? {
+    class func getValue<ValueType>(for keyPath: String) -> ValueType? {
         guard let info = shared.currentTheme?.info else { return nil }
         guard let value = info.value(forKeyPath: keyPath) as? ValueType else { return nil }
         return value
@@ -24,21 +24,21 @@ public extension ThemeManager {
 
 public extension ThemeManager {
     
-    public class func string(_ keyPath: String) -> String? {
+    class func string(_ keyPath: String) -> String? {
         
         guard let info = shared.currentTheme?.info else { return nil }
         guard let value = info.value(forKeyPath: keyPath) as? String else { return nil }
         return value
     }
     
-    public class func number(_ keyPath: String) -> NSNumber? {
+    class func number(_ keyPath: String) -> NSNumber? {
         
         guard let info = shared.currentTheme?.info else { return nil }
         guard let value = info.value(forKeyPath: keyPath) as? NSNumber else { return nil }
         return value
     }
     
-    public class func textAttributes(_ keyPath: String) -> [NSAttributedString.Key : Any]? {
+    class func textAttributes(_ keyPath: String) -> [NSAttributedString.Key : Any]? {
         guard let info = dictionary(keyPath) else { return nil }
         var attributed: [NSAttributedString.Key : Any] = [:]
         
@@ -78,27 +78,27 @@ public extension ThemeManager {
     //        return value
     //    }
     
-    public class func dictionary(_ keyPath: String) -> NSDictionary? {
+    class func dictionary(_ keyPath: String) -> NSDictionary? {
         
         guard let info = shared.currentTheme?.info else { return nil }
         guard let dict = info.value(forKeyPath: keyPath) as? NSDictionary  else { return nil }
         return dict
     }
     
-    public class func color(_ keyPath: String) -> UIColor? {
+    class func color(_ keyPath: String) -> UIColor? {
         
         guard let hex = string(keyPath) else { return nil }
         guard let color = UIColor(hex) else { return nil }
         return color
     }
     
-    public class func colorImage(_ keyPath: String) -> UIImage? {
+    class func colorImage(_ keyPath: String) -> UIImage? {
 
         guard let color = color(keyPath) else { return nil }
         return UIImage.image(with: color)
     }
     
-    public class func image(_ keyPath: String) -> UIImage? {
+    class func image(_ keyPath: String) -> UIImage? {
         
         guard let imageName = string(keyPath) else { return nil }
         if let dir = shared.currentTheme?.path.URL {
@@ -120,7 +120,7 @@ public extension ThemeManager {
     /// support style of (font.name,font.size,font.weight)
     /// - Parameter keyPath: the key path of style
     /// - Returns: Optional(UIFont)
-    public class func font(_ keyPath: String) -> UIFont? {
+    class func font(_ keyPath: String) -> UIFont? {
         guard let string = string(keyPath) else { return nil }
         return UIFont.font(with: string)
     }

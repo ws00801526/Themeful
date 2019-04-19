@@ -99,7 +99,7 @@ internal extension UIColor {
 
 internal extension UIImage {
     
-    internal class func image(with color: UIColor, size: CGSize = CGSize(width: 1.0, height: 1.0)) -> UIImage? {
+    class func image(with color: UIColor, size: CGSize = CGSize(width: 1.0, height: 1.0)) -> UIImage? {
         
         guard size.width > 0, size.height > 0 else { return nil }
         let rect = CGRect(origin: .zero, size: size)
@@ -133,7 +133,7 @@ internal extension UIFont.Weight {
 
 internal extension UIFont {
     
-    internal class func font(with string: String) -> UIFont? {
+    class func font(with string: String) -> UIFont? {
         let values = string.split(separator: ".")
         guard values.count == 3 else { return nil }
         let name = String(values.first ?? "")

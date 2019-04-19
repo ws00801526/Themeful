@@ -46,7 +46,7 @@ private struct AssociateKeys {
 
 public extension ThemefulCompatible where Self: NSObject {
 
-    public var theme: Themeful<Self> {
+    var theme: Themeful<Self> {
         
         if let theme = objc_getAssociatedObject(self, &AssociateKeys.TFKey) as? Themeful<Self> { return theme }
         let theme = Themeful(self)
@@ -57,7 +57,7 @@ public extension ThemefulCompatible where Self: NSObject {
 
 fileprivate extension Themeful {
     
-    fileprivate func setupThemeNotification() {
+    func setupThemeNotification() {
         let center = NotificationCenter.default
         if #available(iOS 9.0, *) { // iOS9 later we dont need to remove notification, perferred to using this method
             center.addObserver(self, selector: #selector(Themeful.updateTheme), name: ThemeDidUpdateNotification, object: nil)
@@ -66,7 +66,7 @@ fileprivate extension Themeful {
         }
     }
     
-    fileprivate func removeThemeNotification() {
+    func removeThemeNotification() {
         NotificationCenter.default.removeObserver(self, name: ThemeDidUpdateNotification, object: nil)
     }
 }
